@@ -41,7 +41,7 @@ P1 = K1*[eye(3) zeros(3,1)];
 P2 = K2*[R t];
 
 E = crossm(t)*R;
-F = K2*E*K1;
+F = K2\E/K1;
 F = F/F(end);
 
 x1 = zeros(3,np);

@@ -18,6 +18,33 @@ caseinfo.solver = str2func('solver_new_kE');
 testcases{end+1} = caseinfo;
 
 
+%% testcase kfE
+caseinfo.name = 'kfE';
+caseinfo.sz = [  24    30    35    35];
+caseinfo.nvars = 2;
+caseinfo.np = 7;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 1;
+caseinfo.ftype = 1;
+caseinfo.nelim = 6;
+caseinfo.datafun = str2func('data_from_lin_kfE_cc');
+caseinfo.solver = str2func('solver_new_kfE');
+
+testcases{end+1} = caseinfo;
+
+%% testcase kEf
+caseinfo.name = 'kEf';
+caseinfo.sz = [  24    40    40    45];
+caseinfo.nvars = 2;
+caseinfo.np = 7;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 1;
+caseinfo.ftype = 4;
+caseinfo.nelim = 6;
+caseinfo.datafun = str2func('data_from_lin_kEf_cc');
+caseinfo.solver = str2func('solver_new_kEf');
+
+testcases{end+1} = caseinfo;
 
 %% testcase kfEk
 caseinfo.name = 'kfEk';
@@ -43,15 +70,15 @@ testcases{end+1} = caseinfo;
 
 nrc = length(testcases);
 for cc = 1:nrc
-%for cc = 1
+%for cc = 3
     
     caseinfo = testcases{cc};
     allkd = nan(caseinfo.nvars,nrsam);
     
     for iii = 1:nrsam
         
-        %[u,v,gt,K1,K2,P1,P2,E,F] = getRandomData(ktype,ftype,nvars)
-        [u,v,gt] = getRandomData(caseinfo.ktype,caseinfo.ftype,caseinfo.nvars,caseinfo.np);
+        [u,v,gt,K1,K2,P1,P2,E,F] = getRandomData(caseinfo.ktype,caseinfo.ftype,caseinfo.nvars,caseinfo.np);
+        
         
         t0 = cputime;
                 

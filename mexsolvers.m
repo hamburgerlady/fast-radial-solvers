@@ -24,3 +24,16 @@ mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fnam
 fname = 'solvers/solver_new_kE.cpp';
 
 mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+%% kfE
+% which solver to compile?
+fname = 'solvers/solver_new_kfE.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+%% kEf
+% which solver to compile?
+fname = 'solvers/solver_new_kEf.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+

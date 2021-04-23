@@ -46,6 +46,20 @@ caseinfo.solver = str2func('solver_new_kEf');
 
 testcases{end+1} = caseinfo;
 
+%% testcase kfEf
+caseinfo.name = 'kfEf';
+caseinfo.sz = [24 60];
+caseinfo.nvars = 2;
+caseinfo.np = 7;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 1;
+caseinfo.ftype = 2;
+caseinfo.nelim = 6;
+caseinfo.datafun = str2func('data_from_lin_kfEf_cc');
+caseinfo.solver = str2func('solver_new_kfEf');
+
+testcases{end+1} = caseinfo;
+
 %% testcase kfEk
 caseinfo.name = 'kfEk';
 caseinfo.sz = [50 65 80 85];
@@ -70,7 +84,7 @@ testcases{end+1} = caseinfo;
 
 nrc = length(testcases);
 for cc = 1:nrc
-%for cc = 3
+%for cc = 4
     
     caseinfo = testcases{cc};
     allkd = nan(caseinfo.nvars,nrsam);

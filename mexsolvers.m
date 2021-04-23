@@ -37,3 +37,9 @@ fname = 'solvers/solver_new_kEf.cpp';
 
 mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
 
+%% kfEf
+% which solver to compile?
+fname = 'solvers/solver_new_kfEf.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+

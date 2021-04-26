@@ -76,15 +76,101 @@ testcases{end+1} = caseinfo;
 
 
 
+%% testcase kfEfk
+caseinfo.name = 'kfEfk';
+caseinfo.sz = [50 117];
+caseinfo.nvars = 2;
+caseinfo.np = 7;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 2;
+caseinfo.ftype = 2;
+caseinfo.nelim = 4;
+caseinfo.datafun = str2func('data_from_lin_kfEfk_cc');
+caseinfo.solver = str2func('solver_new_kfEfk');
+
+testcases{end+1} = caseinfo;
+
+%% testcase kF
+caseinfo.name = 'kF';
+caseinfo.sz = 9;
+caseinfo.nvars = 1;
+caseinfo.np = 8;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 1;
+caseinfo.ftype = 3;
+caseinfo.nelim = 6;
+caseinfo.datafun = str2func('data_from_lin_kF_cc');
+caseinfo.solver = str2func('solver_new_kF');
+
+testcases{end+1} = caseinfo;
 
 
+
+%% testcase kFk
+caseinfo.name = 'kFk';
+caseinfo.sz = 17;
+caseinfo.nvars = 1;
+caseinfo.np = 8;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 2;
+caseinfo.ftype = 3;
+caseinfo.nelim = 4;
+caseinfo.datafun = str2func('data_from_lin_kFk_cc');
+caseinfo.solver = str2func('solver_new_kFk');
+
+testcases{end+1} = caseinfo;
+
+
+
+%% testcase k2fEk1
+caseinfo.name = 'k2fEk1';
+caseinfo.sz = [ 81   132   132   143];
+caseinfo.nvars = 2;
+caseinfo.np = 8;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 3;
+caseinfo.ftype = 1;
+caseinfo.nelim = 4;
+caseinfo.datafun = str2func('data_from_lin_k2fEk1_cc');
+caseinfo.solver = str2func('solver_new_k2fEk1');
+
+testcases{end+1} = caseinfo;
+
+
+%% testcase k2fEfk1
+caseinfo.name = 'k2fEfk1';
+caseinfo.sz = [ 81   221];
+caseinfo.nvars = 2;
+caseinfo.np = 8;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 3;
+caseinfo.ftype = 2;
+caseinfo.nelim = 4;
+caseinfo.datafun = str2func('data_from_lin_k2fEfk1_cc');
+caseinfo.solver = str2func('solver_new2_k2fEfk1');
+
+testcases{end+1} = caseinfo;
+
+%% testcase k2Fk1
+caseinfo.name = 'k2Fk1';
+caseinfo.sz = [81 16];
+caseinfo.nvars = 2;
+caseinfo.np = 9;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 3;
+caseinfo.ftype = 3;
+caseinfo.nelim = 4;
+caseinfo.datafun = str2func('data_from_lin_k2Fk1_cc');
+caseinfo.solver = str2func('solver_new_k2Fk1');
+
+testcases{end+1} = caseinfo;
 
 
 %% test cases
 
 nrc = length(testcases);
-for cc = 1:nrc
-%for cc = 4
+%for cc = 1:nrc
+for cc = 11
     
     caseinfo = testcases{cc};
     allkd = nan(caseinfo.nvars,nrsam);
@@ -106,6 +192,7 @@ for cc = 1:nrc
                 Dr = Dr(:,end);
                 data = caseinfo.datafun(Ar,Br,Dr);
             case 3
+                Br = Br(:,3:end);
                 Cr = Cr(:,[1 2 5]);
                 Dr = Dr(:,end);
                 data = caseinfo.datafun(Ar,Br,Cr,Dr);
@@ -117,7 +204,10 @@ for cc = 1:nrc
         sols = caseinfo.solver(data);
         
         sols(:,sum(abs(sols))<1e-10)=[];
+        
+        
         if ~isempty(sols)
+            
             for vv = 1:caseinfo.nvars
                 allkd(vv,iii)  = min(abs(sols(vv,:)-gt(vv)));
             end

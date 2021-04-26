@@ -43,3 +43,45 @@ fname = 'solvers/solver_new_kfEf.cpp';
 
 mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
 
+
+%% kfEfk
+% which solver to compile?
+fname = 'solvers/solver_new_kfEfk.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+
+%% kF
+% which solver to compile?
+fname = 'solvers/solver_new_kF.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+%% kFk
+% which solver to compile?
+fname = 'solvers/solver_new_kFk.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+
+
+%% k2fEk1
+% which solver to compile?
+fname = 'solvers/solver_new_k2fEk1.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+%% k2fEfk1
+% which solver to compile?
+fname = 'solvers/solver_new_k2fEfk1.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+%% k2Fk1
+% which solver to compile?
+fname = 'solvers/solver_new_k2Fk1.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+
+

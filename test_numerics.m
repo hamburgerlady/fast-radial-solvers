@@ -1,6 +1,5 @@
 %% init
-%nrsam = 10000;
-nrsam = 1000;
+nrsam = 10000;
 
 testcases = cell(0);
 binny = -16:.3:3;
@@ -163,7 +162,7 @@ caseinfo.ktype = 3;
 caseinfo.ftype = 2;
 caseinfo.nelim = 4;
 caseinfo.datafun = str2func('data_from_lin_k2fEfk1_cc');
-caseinfo.solver = str2func('solver_new2_k2fEfk1');
+caseinfo.solver = str2func('solver_new_k2fEfk1');
 
 testcases{end+1} = caseinfo;
 
@@ -184,9 +183,9 @@ testcases{end+1} = caseinfo;
 %% test cases
 
 nrc = length(testcases);
-%for cc = 1:nrc
-for cc = 7
-    
+for cc = 1:nrc
+%for cc = 7
+    disp([cc nrc])
     
     caseinfo = testcases{cc};
     allkd = nan(caseinfo.nvars,nrsam);
@@ -231,12 +230,11 @@ for cc = 7
     end
     figure(cc)
     clf
-    leggy = {};
+    leggy = cell(1,caseinfo.nvars);
     for vv = 1:caseinfo.nvars
         histogram(log10(abs(allkd(vv,:))),binny,'Normalization','pdf')
         hold on
-        leggy{end+1} = ['Parameter ' num2str(vv)];
-        %title(['parameter' num2str(vv)])
+        leggy{vv} = ['Parameter ' num2str(vv)];
     end
     legend(leggy)
     title(caseinfo.name)

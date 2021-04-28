@@ -1,5 +1,7 @@
 %% init
-nrsam = 10000;
+%nrsam = 10000;
+nrsam = 1000;
+
 testcases = cell(0);
 binny = -16:.3:3;
 
@@ -90,6 +92,20 @@ caseinfo.solver = str2func('solver_new_kfEfk');
 
 testcases{end+1} = caseinfo;
 
+%% testcase k2Ek1
+caseinfo.name = 'k2Ek1';
+caseinfo.sz = [ 238   238   204   238   238   204   210   210   180   180     7];
+caseinfo.nvars = 3;
+caseinfo.np = 7;
+caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
+caseinfo.ktype = 3;
+caseinfo.ftype = 0;
+caseinfo.nelim = 4;
+caseinfo.datafun = str2func('data_from_lin_k2Ek1_cc');
+caseinfo.solver = str2func('solver_new_k2Ek1');
+testcases{end+1} = caseinfo;
+
+
 %% testcase kF
 caseinfo.name = 'kF';
 caseinfo.sz = 9;
@@ -162,7 +178,6 @@ caseinfo.ftype = 3;
 caseinfo.nelim = 4;
 caseinfo.datafun = str2func('data_from_lin_k2Fk1_cc');
 caseinfo.solver = str2func('solver_new_k2Fk1');
-
 testcases{end+1} = caseinfo;
 
 
@@ -170,7 +185,8 @@ testcases{end+1} = caseinfo;
 
 nrc = length(testcases);
 %for cc = 1:nrc
-for cc = 11
+for cc = 7
+    
     
     caseinfo = testcases{cc};
     allkd = nan(caseinfo.nvars,nrsam);
@@ -204,10 +220,9 @@ for cc = 11
         sols = caseinfo.solver(data);
         
         sols(:,sum(abs(sols))<1e-10)=[];
-        
+        sols(:,sum(abs(imag(sols)))>1e-10)=[];
         
         if ~isempty(sols)
-            
             for vv = 1:caseinfo.nvars
                 allkd(vv,iii)  = min(abs(sols(vv,:)-gt(vv)));
             end

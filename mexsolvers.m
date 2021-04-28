@@ -51,6 +51,14 @@ fname = 'solvers/solver_new_kfEfk.cpp';
 mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
 
 
+%% k2Ek1
+% which solver to compile?
+fname = 'solvers/solver_new_k2Ek1.cpp';
+
+mex(['-I"' cg_eigen_dir '"'],['-I"' template_dir '"'],'-outdir',outdir,'-O',fname)
+
+
+
 %% kF
 % which solver to compile?
 fname = 'solvers/solver_new_kF.cpp';

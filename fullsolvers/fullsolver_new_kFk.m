@@ -3,6 +3,8 @@ function [F,k] = fullsolver_new_kFk(u,v)
 %
 % input: image coordinates 2x8 u (first image) and 2x8 v (second image)
 % output: Estimated fundamental matrices 9xn F and radial 1xn k (n solutions)
+% 
+% Magnus Oskarsson 2021
 
 ktype = 2;
 nelim = 4;

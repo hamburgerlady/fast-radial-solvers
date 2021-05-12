@@ -3,6 +3,8 @@ function [E,k] = fullsolver_new_kE(u,v)
 %
 % input: image coordinates 2x6 u (first image) and 2x6 v (second image)
 % output: Estimated essential matrices 9xn E and radial 1xn k (n solutions)
+% 
+% Magnus Oskarsson 2021
 
 
 ktype = 1;

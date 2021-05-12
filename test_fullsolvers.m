@@ -68,15 +68,12 @@ testcases{end+1} = caseinfo;
 
 %% testcase k2Ek1
 caseinfo.name = 'k2Ek1';
-caseinfo.sz = [ 238   238   204   238   238   204   210   210   180   180     7];
 caseinfo.nvars = 3;
 caseinfo.np = 7;
-caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
 caseinfo.ktype = 3;
 caseinfo.ftype = 0;
-caseinfo.nelim = 4;
-caseinfo.datafun = str2func('data_from_lin_k2Ek1_cc');
-caseinfo.solver = str2func('solver_new_k2Ek1');
+caseinfo.fullsolver = str2func('fullsolver_new_k2Ek1');
+
 testcases{end+1} = caseinfo;
 
 
@@ -107,44 +104,33 @@ testcases{end+1} = caseinfo;
 
 %% testcase k2fEk1
 caseinfo.name = 'k2fEk1';
-caseinfo.sz = [ 81   132   132   143];
 caseinfo.nvars = 2;
 caseinfo.np = 8;
-caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
 caseinfo.ktype = 3;
 caseinfo.ftype = 1;
-caseinfo.nelim = 4;
-caseinfo.datafun = str2func('data_from_lin_k2fEk1_cc');
-caseinfo.solver = str2func('solver_new_k2fEk1');
+caseinfo.fullsolver = str2func('fullsolver_new_k2fEk1');
 
 testcases{end+1} = caseinfo;
 
 
 %% testcase k2fEfk1
 caseinfo.name = 'k2fEfk1';
-caseinfo.sz = [ 81   221];
 caseinfo.nvars = 2;
 caseinfo.np = 8;
-caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
 caseinfo.ktype = 3;
 caseinfo.ftype = 2;
-caseinfo.nelim = 4;
-caseinfo.datafun = str2func('data_from_lin_k2fEfk1_cc');
-caseinfo.solver = str2func('solver_new_k2fEfk1');
+caseinfo.fullsolver = str2func('fullsolver_new_k2fEfk1');
 
 testcases{end+1} = caseinfo;
 
 %% testcase k2Fk1
 caseinfo.name = 'k2Fk1';
-caseinfo.sz = [81 16];
 caseinfo.nvars = 2;
 caseinfo.np = 9;
 caseinfo.ordo = [1 2 4 5 7 8 3 6 9];
 caseinfo.ktype = 3;
 caseinfo.ftype = 3;
-caseinfo.nelim = 4;
-caseinfo.datafun = str2func('data_from_lin_k2Fk1_cc');
-caseinfo.solver = str2func('solver_new_k2Fk1');
+caseinfo.fullsolver = str2func('fullsolver_new_k2Fk1');
 testcases{end+1} = caseinfo;
 
 
